@@ -7,7 +7,7 @@ Firmware of USB sensor use 50-point boxcar filter to get the average readout fro
 
 This project package contain two console applications. The first application (*sensor-logger*) is use to monitor the sensor readings and we design it to calibrate the control software. 
 
-The control software is named as *brightness-control*. Both these software may not need any command line arguments and they can launch by just double clicking or through the command line console. 
+The control software is named as *brightness-control*. Both these executables may not need any command line arguments and they can launch by just double clicking or through the command line console. 
 
 All the PC applications of this project are developed using *Visual C++ 2012* and PIC 18F2550 firmware is developed using *MikroC for PIC version 6.2*.
 
