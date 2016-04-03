@@ -90,7 +90,18 @@ INT _tmain(INT argc, _TCHAR* argv[])
 	waitThreadList[0] = sensorWorkerHandle;
 	waitThreadList[1] = displayWorkerHandle;
 	WaitForMultipleObjects(2, waitThreadList, TRUE, INFINITE);
+	
+	// Clean up all allocated HID API resources.
+	hid_close(workerPipeline.deviceHandle);
+	workerPipeline.deviceHandle = NULL;
+	hid_exit();
 
+	// Cleanup any available data structures.
+	DestroyPhysicalMonitors(workerPipeline.totalPhysicalMonitors, workerPipeline.totalPhysicalMonitorsStruct); 
+	free(workerPipeline.totalPhysicalMonitorsStruct); 
+	workerPipeline.totalPhysicalMonitors = 0;
+	workerPipeline.totalPhysicalMonitorsStruct = NULL;
+	
 	return 0;
 }
 
