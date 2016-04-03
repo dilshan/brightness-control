@@ -97,11 +97,13 @@ INT _tmain(INT argc, _TCHAR* argv[])
 	hid_exit();
 
 	// Cleanup any available data structures.
-	DestroyPhysicalMonitors(workerPipeline.totalPhysicalMonitors, workerPipeline.totalPhysicalMonitorsStruct); 
-	free(workerPipeline.totalPhysicalMonitorsStruct); 
-	workerPipeline.totalPhysicalMonitors = 0;
-	workerPipeline.totalPhysicalMonitorsStruct = NULL;
-	
+	if(workerPipeline.totalPhysicalMonitorsStruct != NULL)
+	{
+		DestroyPhysicalMonitors(workerPipeline.totalPhysicalMonitors, workerPipeline.totalPhysicalMonitorsStruct); 
+		free(workerPipeline.totalPhysicalMonitorsStruct); 
+		workerPipeline.totalPhysicalMonitors = 0;
+		workerPipeline.totalPhysicalMonitorsStruct = NULL;
+	}
 	return 0;
 }
 
